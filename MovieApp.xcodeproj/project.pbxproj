@@ -15,6 +15,7 @@
 		CEA5C0AD26BA5CD300335586 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEA5C0AB26BA5CD300335586 /* LaunchScreen.storyboard */; };
 		CEA5C0B826BA5CD400335586 /* MovieAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA5C0B726BA5CD400335586 /* MovieAppTests.swift */; };
 		CEA5C0C326BA5CD400335586 /* MovieAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA5C0C226BA5CD400335586 /* MovieAppUITests.swift */; };
+		CEA5C0E026BA5FFF00335586 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA5C0DF26BA5FFF00335586 /* MovieCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		CEA5C0BE26BA5CD400335586 /* MovieAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA5C0C226BA5CD400335586 /* MovieAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAppUITests.swift; sourceTree = "<group>"; };
 		CEA5C0C426BA5CD400335586 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEA5C0DF26BA5FFF00335586 /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				CEA5C0A026BA5CD100335586 /* AppDelegate.swift */,
 				CEA5C0A226BA5CD100335586 /* SceneDelegate.swift */,
 				CEA5C0A426BA5CD100335586 /* ViewController.swift */,
+				CEA5C0DF26BA5FFF00335586 /* MovieCell.swift */,
 				CEA5C0A626BA5CD100335586 /* Main.storyboard */,
 				CEA5C0A926BA5CD300335586 /* Assets.xcassets */,
 				CEA5C0AB26BA5CD300335586 /* LaunchScreen.storyboard */,
@@ -260,6 +263,7 @@
 			files = (
 				CEA5C0A526BA5CD100335586 /* ViewController.swift in Sources */,
 				CEA5C0A126BA5CD100335586 /* AppDelegate.swift in Sources */,
+				CEA5C0E026BA5FFF00335586 /* MovieCell.swift in Sources */,
 				CEA5C0A326BA5CD100335586 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
