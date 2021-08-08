@@ -106,6 +106,15 @@ extension ViewController:
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.movieModel?.results.count ?? 0
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailVC = UIStoryboard(name:"DetailViewController" ,bundle:nil).instantiateViewController(identifier: "DetailViewController") as! DetailViewController
+    
+        detailVC.movieResult = self.movieModel?.results[indexPath.row]
+        self.present(detailVC, animated: true){
+           
+        }
+        
+    }
     //  컨텐츠 내용만큼 높이를 지정하겠다.
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
