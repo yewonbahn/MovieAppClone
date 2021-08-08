@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84FC828026BE73D800DF5A01 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FC827F26BE73D800DF5A01 /* MovieModel.swift */; };
 		CEA5C0A126BA5CD100335586 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA5C0A026BA5CD100335586 /* AppDelegate.swift */; };
 		CEA5C0A326BA5CD100335586 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA5C0A226BA5CD100335586 /* SceneDelegate.swift */; };
 		CEA5C0A526BA5CD100335586 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA5C0A426BA5CD100335586 /* ViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		84FC827F26BE73D800DF5A01 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		CEA5C09D26BA5CD100335586 /* MovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA5C0A026BA5CD100335586 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEA5C0A226BA5CD100335586 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 			children = (
 				CEA5C0A026BA5CD100335586 /* AppDelegate.swift */,
 				CEA5C0A226BA5CD100335586 /* SceneDelegate.swift */,
+				84FC827F26BE73D800DF5A01 /* MovieModel.swift */,
 				CEA5C0DF26BA5FFF00335586 /* MovieCell.swift */,
 				CEA5C0A426BA5CD100335586 /* ViewController.swift */,
 				CEA5C0A626BA5CD100335586 /* Main.storyboard */,
@@ -263,6 +266,7 @@
 			files = (
 				CEA5C0A526BA5CD100335586 /* ViewController.swift in Sources */,
 				CEA5C0A126BA5CD100335586 /* AppDelegate.swift in Sources */,
+				84FC828026BE73D800DF5A01 /* MovieModel.swift in Sources */,
 				CEA5C0E026BA5FFF00335586 /* MovieCell.swift in Sources */,
 				CEA5C0A326BA5CD100335586 /* SceneDelegate.swift in Sources */,
 			);
@@ -442,6 +446,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MovieApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -460,6 +465,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MovieApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
