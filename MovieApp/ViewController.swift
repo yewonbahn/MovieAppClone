@@ -20,6 +20,38 @@ class ViewController: UIViewController {
         searchBar.delegate = self
         requestMovieAPI()
     }
+    // completion은 어떤것에대한 동작들이 최종적으로 완료되었을때 실행되는 느낌으로 사용
+    // 타입은 클로져 타입 (클로져 타입을 받아야되기 때문에)
+    func loadImage(urlString: String, completion: @escaping(UIImage?) -> Void){
+        let sessionConfig = URLSessionConfiguration.default
+        let session = URLSession(configuration: sessionConfig)
+        if let hasURL = URL(string: urlString)
+        {
+            var request = URLRequest(url : hasURL )
+            request.httpMethod = "GET"
+            
+            session.dataTask(with: request) { (data, response, error) in
+                print((response as! HTTPURLResponse).statusCode)
+                //메인쓰레드에서 쭉 생성된 기본 상태의 로직에서만 쭉 로직이 순차적으로만 진행되고
+                //보장됐을때만 작동한다.
+                //그럼 어떻게?
+                
+                //클로져는 escaping 이란 개념이 있다.
+                //클로져에서 리턴받은 데이터는 이 값의 생명주기는, 여기서 밖으로 나가면 없어진다
+                //괄호안에서만 살아있다. 밖으로 나가서 전달하고 싶다면?
+                //Escaping : 계속 유지를 하겟다. 타입앞에다가 선언
+                if let hasData = data{
+                   
+                    completion(UIImage(data: hasData))
+                    return
+                }
+               
+            }.resume()
+        }
+        
+        completion(nil)
+
+    }
 // network
     func requestMovieAPI(){
         let sessionConfig = URLSessionConfiguration.default
@@ -74,6 +106,10 @@ extension ViewController:
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.movieModel?.results.count ?? 0
     }
+    //  컨텐츠 내용만큼 높이를 지정하겠다.
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieCell
@@ -81,9 +117,33 @@ extension ViewController:
         cell.titleLabel.text = self.movieModel?.results[indexPath.row].trackName
         cell.descriptionLabel.text = self.movieModel?.results[indexPath.row].shortDescription
         
+        
         let currency = self.movieModel?.results[indexPath.row].currency ?? ""
         let price = self.movieModel?.results[indexPath.row].trackPrice?.description ?? ""
         cell.priceLabel.text = currency + price
+        
+        
+        if let hasURL = self.movieModel?.results[indexPath.row].image{            self.loadImage(urlString: hasURL) { image in
+            DispatchQueue.main.async {
+                cell.movieImageView.image = image
+            }
+        }
+    }
+        if let dateString = self.movieModel?.results[indexPath.row].releaseDate
+        {
+            let formatter = ISO8601DateFormatter()
+            if let isoDate = formatter.date(from: dateString){
+                let myFormatter = DateFormatter()
+                myFormatter.dateFormat = "yyyy년 MM월 dd일"
+                let dateString = myFormatter.string(from: isoDate)
+                
+                cell.dateLabel.text = dateString
+            }
+        
+        }
+      
+        
+        
         return cell
     }
     
