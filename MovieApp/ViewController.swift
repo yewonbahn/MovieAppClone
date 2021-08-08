@@ -79,6 +79,11 @@ extension ViewController:
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieCell
         
         cell.titleLabel.text = self.movieModel?.results[indexPath.row].trackName
+        cell.descriptionLabel.text = self.movieModel?.results[indexPath.row].shortDescription
+        
+        let currency = self.movieModel?.results[indexPath.row].currency ?? ""
+        let price = self.movieModel?.results[indexPath.row].trackPrice?.description ?? ""
+        cell.priceLabel.text = currency + price
         return cell
     }
     
