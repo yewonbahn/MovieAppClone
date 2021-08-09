@@ -66,6 +66,12 @@ class DetailViewController: UIViewController {
     @IBAction func stop(_ sender: Any) {
         self.player?.pause()
     }
+    @IBAction func close(_ sender: Any) {
+        
+        //dismiss는 present한걸 내릴떄!
+        //present로 띄운건, dismiss로 내릴수있다.ㄴ
+        self.dismiss(animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 

@@ -114,6 +114,7 @@ extension ViewController:
         let detailVC = UIStoryboard(name:"DetailViewController" ,bundle:nil).instantiateViewController(identifier: "DetailViewController") as! DetailViewController
     
         detailVC.movieResult = self.movieModel?.results[indexPath.row]
+      //  detailVC.modalPresentationStyle = .fullScreen
         self.present(detailVC, animated: true){
             
         }

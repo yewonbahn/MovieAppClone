@@ -17,39 +17,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8B8-XX-AP2">
-                                <rect key="frame" x="0.0" y="64" width="414" height="250"/>
-                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="Tbh-Ol-u0i"/>
-                                </constraints>
-                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VuR-Nf-rL7">
+                                <rect key="frame" x="20" y="414" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="안녕 " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pql-Gc-D4u">
+                                <rect key="frame" x="20" y="455" width="374" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1iP-TU-eL9">
-                                <rect key="frame" x="355" y="334" width="39" height="30"/>
+                                <rect key="frame" x="355" y="364" width="39" height="30"/>
                                 <state key="normal" title="STOP"/>
                                 <connections>
                                     <action selector="stop:" destination="8Zt-67-tMv" eventType="touchUpInside" id="0Yg-QN-msF"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bMj-gO-kWr">
-                                <rect key="frame" x="299" y="334" width="36" height="30"/>
+                                <rect key="frame" x="299" y="364" width="36" height="30"/>
                                 <state key="normal" title="PLAY"/>
                                 <connections>
                                     <action selector="play:" destination="8Zt-67-tMv" eventType="touchUpInside" id="k5h-0w-f1h"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VuR-Nf-rL7">
-                                <rect key="frame" x="20" y="384" width="374" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="안녕 " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pql-Gc-D4u">
-                                <rect key="frame" x="20" y="425" width="374" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MnX-0f-ayE">
+                                <rect key="frame" x="358" y="30" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="close:" destination="8Zt-67-tMv" eventType="touchUpInside" id="EaX-zE-tNj"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8B8-XX-AP2">
+                                <rect key="frame" x="0.0" y="106" width="414" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="Tbh-Ol-u0i"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="agA-gB-gXx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -65,9 +71,12 @@
                             <constraint firstItem="agA-gB-gXx" firstAttribute="trailing" secondItem="pql-Gc-D4u" secondAttribute="trailing" constant="20" id="Rzg-Hq-2OL"/>
                             <constraint firstItem="pql-Gc-D4u" firstAttribute="top" secondItem="VuR-Nf-rL7" secondAttribute="bottom" constant="20" id="UvT-jA-5Jv"/>
                             <constraint firstItem="agA-gB-gXx" firstAttribute="trailing" secondItem="8B8-XX-AP2" secondAttribute="trailing" id="a8U-Eb-Sc4"/>
+                            <constraint firstItem="MnX-0f-ayE" firstAttribute="top" secondItem="NcB-l2-KhQ" secondAttribute="top" constant="30" id="c4k-nz-uJW"/>
                             <constraint firstItem="bMj-gO-kWr" firstAttribute="top" secondItem="8B8-XX-AP2" secondAttribute="bottom" constant="20" id="cSn-rh-q7L"/>
                             <constraint firstItem="agA-gB-gXx" firstAttribute="trailing" secondItem="1iP-TU-eL9" secondAttribute="trailing" constant="20" id="hvq-Gv-L0u"/>
-                            <constraint firstItem="8B8-XX-AP2" firstAttribute="top" secondItem="agA-gB-gXx" secondAttribute="top" constant="20" id="nV7-Z6-aIK"/>
+                            <constraint firstItem="8B8-XX-AP2" firstAttribute="top" secondItem="agA-gB-gXx" secondAttribute="top" constant="50" id="nV7-Z6-aIK"/>
+                            <constraint firstItem="agA-gB-gXx" firstAttribute="trailing" secondItem="MnX-0f-ayE" secondAttribute="trailing" constant="10" id="u2K-3d-0rH"/>
+                            <constraint firstItem="VuR-Nf-rL7" firstAttribute="top" secondItem="bMj-gO-kWr" secondAttribute="bottom" constant="20" id="vIy-2S-CSM"/>
                         </constraints>
                     </view>
                     <connections>
@@ -84,9 +93,6 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemIndigoColor">
-            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
