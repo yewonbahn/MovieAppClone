@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVKit
 
 class ViewController: UIViewController {
     var movieModel : MovieModel?
@@ -47,6 +48,7 @@ class ViewController: UIViewController {
                 }
                
             }.resume()
+            session.finishTasksAndInvalidate()
         }
         
         completion(nil)
@@ -83,8 +85,10 @@ class ViewController: UIViewController {
                 do{
                     self.movieModel = try  JSONDecoder().decode(MovieModel.self, from: hasData)
                     print(self.movieModel ?? "no data")
-                     
-                    self.movieTableView.reloadData()
+                    DispatchQueue.main.async {
+                       self.movieTableView.reloadData()
+                    }
+                   
                 }
             catch{
                 print(error)
@@ -111,7 +115,7 @@ extension ViewController:
     
         detailVC.movieResult = self.movieModel?.results[indexPath.row]
         self.present(detailVC, animated: true){
-           
+            
         }
         
     }
