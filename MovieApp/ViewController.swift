@@ -112,7 +112,9 @@ extension ViewController:
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = UIStoryboard(name:"DetailViewController" ,bundle:nil).instantiateViewController(identifier: "DetailViewController") as! DetailViewController
-    
+        
+        //내가 고른 쉘 색상이 자연스레 사라짐.
+        tableView.deselectRow(at: indexPath, animated: true)
         detailVC.movieResult = self.movieModel?.results[indexPath.row]
       //  detailVC.modalPresentationStyle = .fullScreen
         self.present(detailVC, animated: true){

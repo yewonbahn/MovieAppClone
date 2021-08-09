@@ -44,8 +44,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MnX-0f-ayE">
-                                <rect key="frame" x="358" y="30" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="367" y="30" width="37" height="30"/>
+                                <state key="normal" title="close"/>
                                 <connections>
                                     <action selector="close:" destination="8Zt-67-tMv" eventType="touchUpInside" id="EaX-zE-tNj"/>
                                 </connections>
