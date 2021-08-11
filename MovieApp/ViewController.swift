@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     
     var networkLayer = NetworkLayer()
     
-        
+    var term = ""
     override func viewDidLoad() { 
         super.viewDidLoad()
         
@@ -73,12 +73,11 @@ class ViewController: UIViewController {
     
 // network
     
+func requestMovieAPI(){
     
-    func requestMovieAPI(){
-        
-        let term = URLQueryItem(name: "term", value: "marvel")
+        let term2 = URLQueryItem(name: "term", value: term)
         let media = URLQueryItem (name:"media",value:"movie")
-        let querys = [term, media]
+        let querys = [term2, media]
         
         
         networkLayer.request(type: .searchMovie(querys: querys)) { (data, response, error) in
@@ -215,7 +214,12 @@ extension ViewController:
 extension ViewController: UISearchBarDelegate{
     //search 눌렀을때 호출되는 함수.
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-  
+        guard let hasText = searchBar.text else {
+            return
+        }
+    term = hasText
+    requestMovieAPI()
+        self.view.endEditing(true)
     }
     
 }
