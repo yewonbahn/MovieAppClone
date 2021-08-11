@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var movieTableView: UITableView!
     
-    
+    var networkLayer = NetworkLayer()
     
         
     override func viewDidLoad() { 
@@ -28,64 +28,61 @@ class ViewController: UIViewController {
     }
     // completion은 어떤것에대한 동작들이 최종적으로 완료되었을때 실행되는 느낌으로 사용
     // 타입은 클로져 타입 (클로져 타입을 받아야되기 때문에)
+//    func loadImage(urlString: String, completion: @escaping(UIImage?) -> Void){
+//        let sessionConfig = URLSessionConfiguration.default
+//        let session = URLSession(configuration: sessionConfig)
+//        if let hasURL = URL(string: urlString)
+//        {
+//            var request = URLRequest(url : hasURL )
+//            request.httpMethod = "GET"
+//
+//            session.dataTask(with: request) { (data, response, error) in
+//                print((response as! HTTPURLResponse).statusCode)
+//                //메인쓰레드에서 쭉 생성된 기본 상태의 로직에서만 쭉 로직이 순차적으로만 진행되고
+//                //보장됐을때만 작동한다.
+//                //그럼 어떻게?
+//
+//                //클로져는 escaping 이란 개념이 있다.
+//                //클로져에서 리턴받은 데이터는 이 값의 생명주기는, 여기서 밖으로 나가면 없어진다
+//                //괄호안에서만 살아있다. 밖으로 나가서 전달하고 싶다면?
+//                //Escaping : 계속 유지를 하겟다. 타입앞에다가 선언
+//                if let hasData = data{
+//
+//                    completion(UIImage(data: hasData))
+//                    return
+//                }
+//
+//            }.resume()
+//            session.finishTasksAndInvalidate()
+//        }
+//
+//        completion(nil)
+//
+//    }
     func loadImage(urlString: String, completion: @escaping(UIImage?) -> Void){
-        let sessionConfig = URLSessionConfiguration.default
-        let session = URLSession(configuration: sessionConfig)
-        if let hasURL = URL(string: urlString)
-        {
-            var request = URLRequest(url : hasURL )
-            request.httpMethod = "GET"
-            
-            session.dataTask(with: request) { (data, response, error) in
-                print((response as! HTTPURLResponse).statusCode)
-                //메인쓰레드에서 쭉 생성된 기본 상태의 로직에서만 쭉 로직이 순차적으로만 진행되고
-                //보장됐을때만 작동한다.
-                //그럼 어떻게?
-                
-                //클로져는 escaping 이란 개념이 있다.
-                //클로져에서 리턴받은 데이터는 이 값의 생명주기는, 여기서 밖으로 나가면 없어진다
-                //괄호안에서만 살아있다. 밖으로 나가서 전달하고 싶다면?
-                //Escaping : 계속 유지를 하겟다. 타입앞에다가 선언
-                if let hasData = data{
-                   
-                    completion(UIImage(data: hasData))
+        networkLayer.request(type: .justURL(urlString: urlString)) { (data, response, error) in
+            if let hasData = data{
+                completion(UIImage(data: hasData))
                     return
-                }
-               
-            }.resume()
-            session.finishTasksAndInvalidate()
+                        }
+            completion(nil)
         }
         
-        completion(nil)
-
     }
+    
+    
 // network
+    
+    
     func requestMovieAPI(){
-        let sessionConfig = URLSessionConfiguration.default
-        let session = URLSession(configuration: sessionConfig)
         
-        var components = URLComponents(string: "https://itunes.apple.com/search")
         let term = URLQueryItem(name: "term", value: "marvel")
         let media = URLQueryItem (name:"media",value:"movie")
+        let querys = [term, media]
         
-        components?.queryItems =  [term, media]
         
-        guard let url = components?.url else {
-            return
-        }
-        var request = URLRequest(url : url )
-        request.httpMethod = "GET"
-        
-        let task = session.dataTask(with: request) {(data, response, error) in
-            print((response as! HTTPURLResponse).statusCode)
-            // statusCode 는 모든 개발자가 알아야한다.
-            // http statuscode : 꼭 공부하자!!
-            // 200 데이터 원하는대로 잘준다!
-            // 300 은 페이지가 다른곳으로 넘어가졌다.
-            // 400,500 -> 보통 error  내가 잘못한경우 or 네트워크가 아예 문제
-            // 다 외울 필요는 없다
+        networkLayer.request(type: .searchMovie(querys: querys)) { (data, response, error) in
             
-            // 인코당 디코딩도 다알도록..!
             if let hasData = data {
                 do{
                     self.movieModel = try  JSONDecoder().decode(MovieModel.self, from: hasData)
@@ -99,15 +96,59 @@ class ViewController: UIViewController {
                 print(error)
             }
             }
-        
+            
         }
         
-    
-        
-        task.resume()
-        session.finishTasksAndInvalidate()
         
     }
+//    func requestMovieAPI(){
+//        let sessionConfig = URLSessionConfiguration.default
+//        let session = URLSession(configuration: sessionConfig)
+//
+//        var components = URLComponents(string:"https://itunes.apple.com/search")
+//        let term = URLQueryItem(name: "term", value: "marvel")
+//        let media = URLQueryItem (name:"media",value:"movie")
+//
+//        components?.queryItems =  [term, media]
+//
+//        guard let url = components?.url else {
+//            return
+//        }
+//        var request = URLRequest(url : url )
+//        request.httpMethod = "GET"
+//
+//        let task = session.dataTask(with: request) {(data, response, error) in
+//            print((response as! HTTPURLResponse).statusCode)
+//            // statusCode 는 모든 개발자가 알아야한다.
+//            // http statuscode : 꼭 공부하자!!
+//            // 200 데이터 원하는대로 잘준다!
+//            // 300 은 페이지가 다른곳으로 넘어가졌다.
+//            // 400,500 -> 보통 error  내가 잘못한경우 or 네트워크가 아예 문제
+//            // 다 외울 필요는 없다
+//
+//            // 인코당 디코딩도 다알도록..!
+//            if let hasData = data {
+//                do{
+//                    self.movieModel = try  JSONDecoder().decode(MovieModel.self, from: hasData)
+//                    print(self.movieModel ?? "no data")
+//                    DispatchQueue.main.async {
+//                       self.movieTableView.reloadData()
+//                    }
+//
+//                }
+//            catch{
+//                print(error)
+//            }
+//            }
+//
+//        }
+//
+//
+//
+//        task.resume()
+//        session.finishTasksAndInvalidate()
+//
+//    }
 
 }
 extension ViewController:
