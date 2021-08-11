@@ -11,8 +11,13 @@ import AVKit
 class ViewController: UIViewController {
     var movieModel : MovieModel?
     
+
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var movieTableView: UITableView!
+    
+    
+    
+        
     override func viewDidLoad() { 
         super.viewDidLoad()
         
@@ -167,8 +172,9 @@ extension ViewController:
     
 }
 extension ViewController: UISearchBarDelegate{
+    //search 눌렀을때 호출되는 함수.
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
+  
     }
     
 }
